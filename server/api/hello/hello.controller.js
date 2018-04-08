@@ -1,6 +1,7 @@
+const App = require('./../../components/App');
+
+const Utils = App.Utils();
+
 exports.test = (req, res) => {
-  res.send({
-    code: 200,
-    msg: 'Hello World!'
-  });
+  Utils.response(req, res, 200, 'Hello World!');
 };

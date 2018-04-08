@@ -14,6 +14,7 @@ const router = require('./router');
 const App = require('./index');
 
 const Config = App.Config();
+const Utils = App.Utils();
 
 const app = express();
 app.use(helmet.hidePoweredBy({ setTo: 'PHP 5.3.0' })); // hidePoweredBy to remove the X-Powered-By header
@@ -28,6 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(methodOverride());
 app.use(cookieParser());
+app.use(Utils.middleware);
 app.use((req, res, next) => {
   let msg = `${req.method} ${req.path}`;
   if (Object.keys(req.query).length) {
